@@ -17,6 +17,9 @@ public class InterfazConexion extends JPanel{
     private JTextField hostField;
     private JTextField puertoField;
     private JFrame newFrame;
+    private JButton testButton = new JButton("Test✅");
+    private Connection connection;
+    private ConexionBD conexionBD;
 
     public InterfazConexion(JSplitPane splitPane, JPanel newLeftPanel){
         this.splitPane = splitPane;
@@ -107,7 +110,7 @@ public class InterfazConexion extends JPanel{
         ImageIcon imageIcon = new ImageIcon("src/main/resources/images/testBD.png");
         CreateSplitButtons.personalizarBoton(conectarButton,imageIcon);
 
-        JButton testButton = new JButton("Test");
+
         ImageIcon imageIcon2 = new ImageIcon("src/main/resources/images/testBD.png");
         CreateSplitButtons.personalizarBoton(testButton,imageIcon2);
 
@@ -139,7 +142,7 @@ public class InterfazConexion extends JPanel{
 
         conectarButton.addActionListener(e -> {
             InicioBD inicioBD = new InicioBD();
-            ConexionBD conexionBD = new ConexionBD(usuarioField.getText(), contrasena, hostField.getText(), puertoField.getText());
+            conexionBD = new ConexionBD(usuarioField.getText(), contrasena, hostField.getText(), puertoField.getText());
             Connection connection = conexionBD.obtenerConexion();
             if (connection != null) {
                 JOptionPane.showMessageDialog(newFrame, "Conexión exitosa.");
@@ -152,11 +155,14 @@ public class InterfazConexion extends JPanel{
             ConexionBD conexionBD = new ConexionBD(usuarioField.getText(), contrasena, hostField.getText(), puertoField.getText());
             Connection connection = conexionBD.obtenerConexion();
             if (connection != null) {
-                JOptionPane.showMessageDialog(newFrame, newRightPanel, "Mensaje Personalizado", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(newFrame,"La conexion exitosa","Test Exitoso✅", JOptionPane.INFORMATION_MESSAGE);
             }
+
         });
 
     }
+
+
 
     public void cerrarVentana() {
         newFrame.dispose();

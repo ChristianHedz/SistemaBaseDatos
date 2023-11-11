@@ -117,7 +117,9 @@ public class IBasesDatos{
         JComboBox<String> charsetComboBox = new JComboBox<>(charsets);
 
         JButton createButton = new JButton("Crear");
+        JButton tablasButton = new JButton("Ver Tablas");
         createButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        tablasButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
@@ -138,6 +140,8 @@ public class IBasesDatos{
         gbc.gridy++;
         gbc.anchor = GridBagConstraints.CENTER;
         newRightPanel2.add(createButton, gbc);
+        gbc.gridy++;
+        newRightPanel2.add(tablasButton, gbc);
 
         JSplitPane newSplitPane2 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, newLeftPanel2, scrollPane);
         newSplitPane2.setResizeWeight(0.2);
@@ -190,7 +194,6 @@ public class IBasesDatos{
                                 boolean isPrimaryKey = primaryKeyCheckboxes.get(j).isSelected();
                                 boolean isAutoIncrement = autoIncrementCheckboxes.get(j).isSelected();
 
-
                                 createTableQuery += "`" + columnName + "` ";
                                 switch (dataType) {
                                     case "Texto":
@@ -230,10 +233,16 @@ public class IBasesDatos{
                 newRightPanel2.repaint();
             }
         });
+
+        tablasButton.addActionListener(e -> {
+            TablasBaseDatos tablasBaseDatos = new TablasBaseDatos(databaseName);
+        });
+
             newSplitPane.remove(newSplitPane);
             newSplitPane.add(newSplitPane2);
             newSplitPane.revalidate();
     }
+
 
     public static void createAndShowGUI2() {
         JFrame frame = new JFrame("Database Image Viewer");

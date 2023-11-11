@@ -21,7 +21,6 @@ import javax.swing.table.DefaultTableModel;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-
 public class TablasBaseDatos extends javax.swing.JFrame {
         private JList<String> tableList;
         private DefaultTableModel tableModel;
@@ -40,7 +39,6 @@ public class TablasBaseDatos extends javax.swing.JFrame {
             System.out.println("connection: " + nombreBase);
             System.out.println(conexion.obtenerConexion());
             interfazTablaBaseDatos();
-
         }
 
         public void interfazTablaBaseDatos(){

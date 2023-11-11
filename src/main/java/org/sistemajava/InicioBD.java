@@ -19,6 +19,7 @@ public class InicioBD extends JFrame {
     private JLabel imageLabel;
     private static JFrame newFrame;
     private InterfazConexion testConexion;
+    private static JTextField nameTextField;
     private ConexionBD conexionBD = new ConexionBD("root", "", "localhost", "3306");
 
     public void interfazInicial(){
@@ -109,31 +110,35 @@ public class InicioBD extends JFrame {
             testConexion.cerrarVentana();
             interfazInicial();
         });
+
+
     }
 
     public void createNewSplitPane2(JSplitPane newSplitPane) {
 
             CreateSplitButtons createSplitButtons = new CreateSplitButtons();
-            JButton crearBase = new JButton("Crear Tabla en BD");
+            JButton crearBase = new JButton("Ver BD's");
             createSplitButtons.setCrearBaseDatosButton(crearBase);
-            JButton crearTabla = new JButton("VER BD'S");
+            JButton crearTabla = new JButton("Crear Tabla");
             createSplitButtons.setCrearTablaButton(crearTabla);
+            JButton limpiar = new JButton("Limpiar");
+            createSplitButtons.setLimpiarButton(limpiar);
             JPanel newLeftPanel2 = createSplitButtons.createSplitButton();
 
+            JPanel newRightPanel2 = new JPanel() {
+                @Override
+                protected void paintComponent(Graphics g) {
+                    super.paintComponent(g);
+                    ImageIcon imageIconFondo = new ImageIcon("src/main/resources/images/fondoBlackSQL.png");
+                    Image image = imageIconFondo.getImage();
+                    g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
+                }
+            };
 
-        JPanel newRightPanel2 = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                ImageIcon imageIconFondo = new ImageIcon("src/main/resources/images/fondoBlackSQL.png");
-                Image image = imageIconFondo.getImage();
-                g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
-            }
-        };
             newRightPanel2.setLayout(new GridBagLayout());
             JLabel nameLabel = new JLabel("Nombre Base de Datos:");
             personalizarLabel(nameLabel);
-            JTextField nameTextField = new JTextField(20);
+            nameTextField = new JTextField(20);
 
             JLabel charsetLabel = new JLabel("Charset:");
             personalizarLabel(charsetLabel);
@@ -185,6 +190,7 @@ public class InicioBD extends JFrame {
             }
         });
 
+            limpiarCampos();
 
             remove(newSplitPane);
             add(newSplitPane2);
@@ -199,6 +205,10 @@ public class InicioBD extends JFrame {
             newFrame.setVisible(true);
             revalidate();
 
+        }
+
+        public static void limpiarCampos(){
+            nameTextField.setText("");
         }
 
         public static void cerrarVentanaCrearBase(){
@@ -255,6 +265,7 @@ public class InicioBD extends JFrame {
         gbc.gridy++;
         gbc.anchor = GridBagConstraints.CENTER;
         newRightPanel2.add(createButton, gbc);
+        gbc.gridy++;
 
         JScrollPane scrollPane = new JScrollPane(newRightPanel2);
         scrollPane.getViewport().setOpaque(false);
@@ -266,18 +277,6 @@ public class InicioBD extends JFrame {
         createButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                if (charsetComboBox.getSelectedItem().equals("0")){
-//                    ConexionBD conexionBase = new ConexionBD(databaseName,"root", "", "localhost", "3306");
-//                    try(Connection connection = conexionBase.obtenerConexion()){
-//                        PreparedStatement statement = connection.prepareStatement("CREATE TABLE IF NOT EXISTS `" + nameTextField.getText() + "`");
-//                        statement.executeUpdate();
-//                        JOptionPane.showMessageDialog(null, "Tabla creada con éxito", "Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
-//                        TablasBaseDatos tablasBaseDatos = new TablasBaseDatos(databaseName);
-//                    }catch (Exception ex){
-//                        ex.printStackTrace();
-//                        JOptionPane.showMessageDialog(null, "Error al crear la tabla", "Mensaje Informativo", JOptionPane.INFORMATION_MESSAGE);
-//                    }
-//                }
                 String tableName = nameTextField.getText();
                 newRightPanel2.removeAll();
                 JPanel mainPanel = new JPanel(new GridLayout(0, 2)); // Una fila, dos columnas
@@ -318,8 +317,8 @@ public class InicioBD extends JFrame {
                                 String dataType = dataTypeComboBoxes.get(j).getSelectedItem().toString();
                                 boolean isPrimaryKey = primaryKeyCheckboxes.get(j).isSelected();
                                 boolean isAutoIncrement = autoIncrementCheckboxes.get(j).isSelected();
-
                                 createTableQuery += "`" + columnName + "` ";
+
                                 switch (dataType) {
                                     case "Texto":
                                         createTableQuery += "VARCHAR(" + 100 + ")";
@@ -361,6 +360,7 @@ public class InicioBD extends JFrame {
 
             }
         });
+
 
         remove(newSplitPane);
         add(newSplitPane2);

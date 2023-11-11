@@ -66,6 +66,10 @@ public class CreateSplitButtons {
             InicioBD inicioBD = new InicioBD();
             inicioBD.ingresarInterfazConexion();
         });
+
+        limpiarButton.addActionListener(e -> {
+            InicioBD.limpiarCampos();
+        });
         return newLeftPanel;
     }
 
