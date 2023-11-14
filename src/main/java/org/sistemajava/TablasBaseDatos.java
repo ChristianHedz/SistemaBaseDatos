@@ -62,14 +62,24 @@ public class TablasBaseDatos extends javax.swing.JFrame {
 
             JPanel buttonPanel = new JPanel();
             createButton = new JButton("Crear");
+            ImageIcon imageIconCrear = new ImageIcon("src/main/resources/images/creartabla.png");
+            CreateSplitButtons.personalizarBoton(createButton,imageIconCrear);
+
             updateButton = new JButton("Actualizar");
+            ImageIcon imageIconEditar = new ImageIcon("src/main/resources/images/editarpng.png");
+            CreateSplitButtons.personalizarBoton(updateButton,imageIconEditar);
+
             deleteButton = new JButton("Eliminar");
+            ImageIcon imageIconEliminar = new ImageIcon("src/main/resources/images/eliminarpng.png");
+            CreateSplitButtons.personalizarBoton(deleteButton,imageIconEliminar);
 
             buttonPanel.add(createButton);
             buttonPanel.add(updateButton);
             buttonPanel.add(deleteButton);
             //boton para seleccionar tabla con los elemntos de los checkbox seleccionados
             JButton selectButton = new JButton("Seleccionar");
+            ImageIcon imageIconSeleccionar = new ImageIcon("src/main/resources/images/seleccionar.png");
+            CreateSplitButtons.personalizarBoton(selectButton,imageIconSeleccionar);
             buttonPanel.add(selectButton);
 
             // Nuevo panel para checkboxes
@@ -405,6 +415,7 @@ public class TablasBaseDatos extends javax.swing.JFrame {
                 }
                 tableModel.addRow(rowData);
             }
+            JOptionPane.showMessageDialog(null,query, "Consulta Exitosa!", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -25,7 +25,7 @@ public class InicioBD extends JFrame {
     public void interfazInicial(){
         setTitle("Bienvenido a mi entorno grafico de base de datos");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(1200, 720);
+        setSize(1350, 720);
         setBackground(Color.BLACK);
         leftPanel = new JPanel();
         leftPanel.setLayout(new GridLayout(7, 1));
@@ -59,8 +59,6 @@ public class InicioBD extends JFrame {
             ingresarInterfazConexion();
             dispose();
         });
-
-
     }
 
     public void ingresarInterfazConexion(){
@@ -157,7 +155,6 @@ public class InicioBD extends JFrame {
             gbc.insets = new Insets(5, 5, 5, 5);
             gbc.anchor = GridBagConstraints.WEST;
 
-
             gbc.gridy++;
             newRightPanel2.add(nameLabel, gbc);
             gbc.gridy++;
@@ -200,7 +197,7 @@ public class InicioBD extends JFrame {
             newFrame = new JFrame("INTERFAZ-CREAR BASE DE DATOS");
             newFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             newFrame.getContentPane().add(newSplitPane);
-            newFrame.setSize(1200, 720);
+            newFrame.setSize(1350, 720);
             newFrame.setLocationRelativeTo(null);
             newFrame.setVisible(true);
             revalidate();
@@ -369,19 +366,18 @@ public class InicioBD extends JFrame {
         JFrame newFrame = new JFrame("Nueva Interfaz");
         newFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         newFrame.getContentPane().add(newSplitPane);
-        newFrame.setSize(1200,720);
+        newFrame.setSize(1350,720);
         newFrame.setLocationRelativeTo(null);
         newFrame.setVisible(true);
         revalidate();
     }
-
 
         private static void personalizarBoton(JButton button5,ImageIcon imageIcon) {
             Image image = imageIcon.getImage();
             Image newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH);
             imageIcon = new ImageIcon(newimg);
             button5.setIcon(imageIcon);
-            button5.setBackground(Color.decode("#F2F2F2"));
+            button5.setBackground(Color.decode("#E5E7E9"));
         }
 
         public static void personalizarLabel(JLabel label){
@@ -389,11 +385,10 @@ public class InicioBD extends JFrame {
             label.setForeground(Color.WHITE);
         }
 
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            new InicioBD().interfazInicial();
-        });
-    }
+        public static void main(String[] args) {
+            SwingUtilities.invokeLater(() -> {
+                new InicioBD().interfazInicial();
+            });
+        }
 
 }

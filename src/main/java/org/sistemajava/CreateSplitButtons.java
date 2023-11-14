@@ -78,7 +78,7 @@ public class CreateSplitButtons {
         Image newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH);
         imageIcon = new ImageIcon(newimg);
         button5.setIcon(imageIcon);
-        button5.setBackground(Color.decode("#F2F2F2"));
+        button5.setBackground(Color.decode("#E5E7E9"));
     }
 
 }

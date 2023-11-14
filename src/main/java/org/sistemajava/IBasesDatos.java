@@ -27,7 +27,11 @@ public class IBasesDatos{
     public static void createAndShowGUI() {
         JFrame frame = new JFrame("Database Image Viewer");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(800, 600);
+        frame.setSize(900, 700);
+        //centrar frame
+        frame.setLocationRelativeTo(null);
+
+
 
         // Crear la conexión a la base de datos
         ConexionBD conexionBase = new ConexionBD("root", "", "localhost", "3306");
@@ -117,7 +121,13 @@ public class IBasesDatos{
         JComboBox<String> charsetComboBox = new JComboBox<>(charsets);
 
         JButton createButton = new JButton("Crear");
+        ImageIcon imageIconCrear = new ImageIcon("src/main/resources/images/creartabla.png");
+        CreateSplitButtons.personalizarBoton(createButton,imageIconCrear);
+
         JButton tablasButton = new JButton("Ver Tablas");
+        ImageIcon imageIconTablas = new ImageIcon("src/main/resources/images/creartabla.png");
+        CreateSplitButtons.personalizarBoton(tablasButton,imageIconTablas);
+
         createButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         tablasButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -247,7 +257,8 @@ public class IBasesDatos{
     public static void createAndShowGUI2() {
         JFrame frame = new JFrame("Database Image Viewer");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(800, 600);
+        frame.setSize(900, 700);
+        frame.setLocationRelativeTo(null);
 
         // Crear la conexión a la base de datos
         ConexionBD conexionBase = new ConexionBD("root", "", "localhost", "3306");
