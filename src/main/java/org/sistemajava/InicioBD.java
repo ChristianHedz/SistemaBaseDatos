@@ -28,8 +28,9 @@ public class InicioBD extends JFrame {
         setSize(1350, 720);
         setBackground(Color.BLACK);
         leftPanel = new JPanel();
+        leftPanel.setBackground(Color.BLACK);
         leftPanel.setLayout(new GridLayout(7, 1));
-        button1 = new JButton("Conectar");
+        button1 = new JButton("CONECTAR");
         ImageIcon imageIconi = new ImageIcon("src/main/resources/images/logo.png");
         personalizarBoton(button1,imageIconi);
         button1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -68,24 +69,28 @@ public class InicioBD extends JFrame {
 
     public void splitPaneTestConnection() {
         JPanel newLeftPanel = new JPanel();
+        newLeftPanel.setBackground(Color.BLACK);
 
         JButton testButton = new JButton("TEST BD");
-        ImageIcon imageIcon = new ImageIcon("src/main/resources/images/testBD.png");
+        ImageIcon imageIcon = new ImageIcon("src/main/resources/images/testing.png");
         personalizarBoton(testButton,imageIcon);
 
         JButton emptyButton = new JButton("");
+        ImageIcon imageIcon4 = new ImageIcon("src/main/resources/images/minus.png");
+        personalizarBoton(emptyButton,imageIcon4);
         JButton emptyButton2 = new JButton("");
+        ImageIcon imageIcon5 = new ImageIcon("src/main/resources/images/minus.png");
+        personalizarBoton(emptyButton2,imageIcon5);
         JButton emptyButton3 = new JButton("");
-        emptyButton.setBackground(Color.decode("#F2F2F2"));
-        emptyButton2.setBackground(Color.decode("#F2F2F2"));
-        emptyButton3.setBackground(Color.decode("#F2F2F2"));
+        ImageIcon imageIcon6 = new ImageIcon("src/main/resources/images/minus.png");
+        personalizarBoton(emptyButton3,imageIcon6);
 
         JButton limpiarButton = new JButton("LIMPIAR");
-        ImageIcon imageIcon2 = new ImageIcon("src/main/resources/images/base.png");
+        ImageIcon imageIcon2 = new ImageIcon("src/main/resources/images/clean.png");
         personalizarBoton(limpiarButton,imageIcon2);
 
         JButton regresarButton = new JButton("ATRAS");
-        ImageIcon imageIcon3 = new ImageIcon("src/main/resources/images/atras.png");
+        ImageIcon imageIcon3 = new ImageIcon("src/main/resources/images/back.png");
         personalizarBoton(regresarButton,imageIcon3);
 
         newLeftPanel.add(testButton);
@@ -145,7 +150,7 @@ public class InicioBD extends JFrame {
             JComboBox<String> charsetComboBox = new JComboBox<>(charsets);
 
             JButton createButton = new JButton("Crear");
-            ImageIcon imageIcon = new ImageIcon("src/main/resources/images/crearBD.png");
+            ImageIcon imageIcon = new ImageIcon("src/main/resources/images/add.png");
             personalizarBoton(createButton,imageIcon);
             createButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -188,11 +193,9 @@ public class InicioBD extends JFrame {
         });
 
             limpiarCampos();
-
             remove(newSplitPane);
             add(newSplitPane2);
             newSplitPane = newSplitPane2;
-
 
             newFrame = new JFrame("INTERFAZ-CREAR BASE DE DATOS");
             newFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -201,7 +204,6 @@ public class InicioBD extends JFrame {
             newFrame.setLocationRelativeTo(null);
             newFrame.setVisible(true);
             revalidate();
-
         }
 
         public static void limpiarCampos(){
@@ -377,7 +379,8 @@ public class InicioBD extends JFrame {
             Image newimg = image.getScaledInstance(50, 50,  java.awt.Image.SCALE_SMOOTH);
             imageIcon = new ImageIcon(newimg);
             button5.setIcon(imageIcon);
-            button5.setBackground(Color.decode("#E5E7E9"));
+            button5.setBackground(Color.BLACK);
+            button5.setForeground(Color.WHITE);
         }
 
         public static void personalizarLabel(JLabel label){
